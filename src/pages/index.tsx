@@ -7,12 +7,14 @@ import {TaskList} from './components/Task/TaskList'
 import Link from 'next/link';
 // import {ActiveLink} from './api/ActiveLink'
 import {Login} from './components/Login'
+import {Register} from './components/Register'
 
 const Home: NextPage = () => {
   return (
     <>
           <Navbar/>
-          <Login/>
+          <Register/>
+          {/* <Login/> */}
           {/* <TaskList/> */}
           {/* <Top/> */}
 
