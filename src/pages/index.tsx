@@ -6,13 +6,14 @@ import {Navbar} from './components/Navbar'
 import {TaskList} from './components/Task/TaskList'
 import Link from 'next/link';
 // import {ActiveLink} from './api/ActiveLink'
+import {Login} from './components/Login'
 
 const Home: NextPage = () => {
   return (
     <>
-          
+          <Navbar/>
+          <Login/>
           {/* <TaskList/> */}
-        {/* <Navbar/> */}
           {/* <Top/> */}
 
     </>

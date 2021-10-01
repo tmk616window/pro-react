@@ -6,6 +6,10 @@ body {
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
+.Login {
+  background-color: rgba(76, 207, 254, 0.9);
+}
+
 a {
   color: inherit;
   text-decoration: none;

@@ -1,5 +1,5 @@
-import { Link as RouterLink, useNavigate } from 'react-router-dom';
-import { Helmet } from 'react-helmet';
+// import { Link as RouterLink, useNavigate } from 'react-router-dom';
+// import { Helmet } from 'react-helmet';
 import * as Yup from 'yup';
 import { Formik } from 'formik';
 import {
@@ -14,17 +14,21 @@ import {
 // import FacebookIcon from '../icons/Facebook';
 // import GoogleIcon from '../icons/Google';
 
-const Login = () => {
-  const navigate = useNavigate();
+export const Login = () => {
+//   const navigate = useNavigate();
 
   return (
     <>
-      <Helmet>
-        <title>Login | Material Kit</title>
-      </Helmet>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+
       <Box
         sx={{
-          backgroundColor: 'background.default',
           display: 'flex',
           flexDirection: 'column',
           height: '100%',
@@ -42,19 +46,19 @@ const Login = () => {
               password: Yup.string().max(255).required('Password is required')
             })}
             onSubmit={() => {
-              navigate('/app/dashboard', { replace: true });
+            //   navigate('', { replace: true });
             }}
           >
             {({
-              errors,
-              handleBlur,
-              handleChange,
-              handleSubmit,
-              isSubmitting,
-              touched,
-              values
+            //   errors,
+            //   handleBlur,
+            //   handleChange,
+            //   handleSubmit,
+            //   isSubmitting,
+            //   touched,
+            //   values
             }) => (
-              <form onSubmit={handleSubmit}>
+              <form >
                 <Box sx={{ mb: 3 }}>
                   <Typography
                     color="textPrimary"
@@ -67,14 +71,13 @@ const Login = () => {
                     gutterBottom
                     variant="body2"
                   >
-                    Sign in on the internal platform
                   </Typography>
                 </Box>
                 <Grid
                   container
                   spacing={3}
                 >
-                  <Grid
+                  {/* <Grid
                     item
                     xs={12}
                     md={6}
@@ -82,29 +85,25 @@ const Login = () => {
                     <Button
                       color="primary"
                       fullWidth
-                      startIcon={<FacebookIcon />}
-                      onClick={handleSubmit}
                       size="large"
                       variant="contained"
                     >
                       Login with Facebook
                     </Button>
-                  </Grid>
-                  <Grid
+                  </Grid> */}
+                  {/* <Grid
                     item
                     xs={12}
                     md={6}
                   >
                     <Button
                       fullWidth
-                      startIcon={<GoogleIcon />}
-                      onClick={handleSubmit}
                       size="large"
                       variant="contained"
                     >
                       Login with Google
                     </Button>
-                  </Grid>
+                  </Grid> */}
                 </Grid>
                 <Box
                   sx={{
@@ -117,39 +116,30 @@ const Login = () => {
                     color="textSecondary"
                     variant="body1"
                   >
-                    or login with email address
                   </Typography>
                 </Box>
                 <TextField
-                  error={Boolean(touched.email && errors.email)}
                   fullWidth
-                  helperText={touched.email && errors.email}
-                  label="Email Address"
+                  placeholder="Email Address"
+                //   label="Email Address"
                   margin="normal"
                   name="email"
-                  onBlur={handleBlur}
-                  onChange={handleChange}
                   type="email"
-                  value={values.email}
                   variant="outlined"
                 />
                 <TextField
-                  error={Boolean(touched.password && errors.password)}
                   fullWidth
-                  helperText={touched.password && errors.password}
-                  label="Password"
+                //   label="Password"
+                  placeholder="Password"
                   margin="normal"
                   name="password"
-                  onBlur={handleBlur}
-                  onChange={handleChange}
                   type="password"
-                  value={values.password}
                   variant="outlined"
                 />
                 <Box sx={{ py: 2 }}>
+                  {/* <button width="100">dedew</button>   */}
                   <Button
-                    color="primary"
-                    disabled={isSubmitting}
+                    color="secondary"
                     fullWidth
                     size="large"
                     type="submit"
@@ -164,7 +154,7 @@ const Login = () => {
                 >
                   Don&apos;t have an account?
                   {' '}
-                  <Link component={RouterLink} to="/register" variant="h6" underline="hover">
+                  <Link>
                     Sign up
                   </Link>
                 </Typography>
@@ -177,4 +167,3 @@ const Login = () => {
   );
 };
 
-export default Login;

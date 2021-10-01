@@ -14,7 +14,6 @@ export const Navbar = () => {
             </button>
             <div className="collapse navbar-collapse" id="navbarResponsive">
                 <ul className="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
-                    <li className="nav-item"><a className="nav-link" href="#services">エンジョブとは</a></li>
                     <li className="nav-item"><a className="nav-link" href="#portfolio">作品を見る</a></li>
                     <li className="nav-item"><a className="nav-link" href="#about">新規登録</a></li>
                     <li className="nav-item"><a className="nav-link" href="#team">ログイン</a></li>
