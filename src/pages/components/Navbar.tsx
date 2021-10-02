@@ -4,10 +4,15 @@ import Image from 'next/image'
 
 export const Navbar = () => {
 
+let logo ={
+    height: "200px",
+    width: "200px"
+}    
+
   return (
     <nav className="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
         <div className="container">
-            <a className="navbar-brand" href="#page-top"><Image src={Logo} alt="..." width="50" height="50"/></a>
+            <a className="navbar-brand" href="#page-top"><Image src={Logo} alt="..." style={logo} /></a>
             <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 Menu
                 <i className="fas fa-bars ms-1"></i>

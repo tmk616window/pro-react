@@ -16,7 +16,9 @@ import {
 export const Register = () => {
 
 let style = {
-    backgroundColor: "#0faece",
+    backgroundColor: "#13EEFF",
+    margin: "50px 0px 0px 0px",
+    padding: "140px 0px 160px 0px"
 };
 
 // let form = {
@@ -27,16 +29,6 @@ let style = {
 
   return (
     <div style={style}>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
 
       <Box
         sx={{
@@ -93,35 +85,10 @@ let style = {
                   </Typography>
                 </Box>
                 <TextField
-                  
-                  error={Boolean(touched.firstName && errors.firstName)}
-                  fullWidth
-                  helperText={touched.firstName && errors.firstName}
-                  margin="normal"
-                  label="First Name"
-                  name="firstName"
-                  onBlur={handleBlur}
-                  onChange={handleChange}
-                  value={values.firstName}
-                  variant="standard"
-                  />
-                <TextField
-                  error={Boolean(touched.lastName && errors.lastName)}
-                  fullWidth
-                  helperText={touched.lastName && errors.lastName}
-                  margin="normal"
-                  placeholder="Last Name"
-                  name="lastName"
-                  onBlur={handleBlur}
-                  onChange={handleChange}
-                  value={values.lastName}
-                  variant="standard"
-                />
-                <TextField
                   error={Boolean(touched.email && errors.email)}
                   fullWidth
                   helperText={touched.email && errors.email}
-                  placeholder="Email Address"
+                  label="Email Address"
                   margin="normal"
                   name="email"
                   onBlur={handleBlur}
@@ -134,7 +101,7 @@ let style = {
                   error={Boolean(touched.password && errors.password)}
                   fullWidth
                   helperText={touched.password && errors.password}
-                  placeholder="Password"
+                  label="Password"
                   margin="normal"
                   name="password"
                   onBlur={handleBlur}
@@ -174,7 +141,7 @@ let style = {
                 )}
                 <Box sx={{ py: 2 }}>
                   <Button
-                    color="warning"
+                    color="secondary"
                     disabled={isSubmitting}
                     fullWidth
                     size="large"

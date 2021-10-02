@@ -11,22 +11,17 @@ import {
   TextField,
   Typography
 } from '@material-ui/core';
-// import FacebookIcon from '../icons/Facebook';
-// import GoogleIcon from '../icons/Google';
+let style = {
+  backgroundColor: "#13EEFF",
+  margin: "100px 0px 0px 0px",
+  padding: "200px 0px 190px 0px"
+};
 
 export const Login = () => {
 //   const navigate = useNavigate();
 
   return (
-    <>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-
+    <div style={style}>
       <Box
         sx={{
           display: 'flex',
@@ -120,21 +115,19 @@ export const Login = () => {
                 </Box>
                 <TextField
                   fullWidth
-                  placeholder="Email Address"
-                //   label="Email Address"
+                  label="Email Address"
                   margin="normal"
                   name="email"
                   type="email"
-                  variant="outlined"
+                  variant="standard"
                 />
                 <TextField
                   fullWidth
-                //   label="Password"
-                  placeholder="Password"
+                  label="Password"
                   margin="normal"
                   name="password"
                   type="password"
-                  variant="outlined"
+                  variant="standard"
                 />
                 <Box sx={{ py: 2 }}>
                   {/* <button width="100">dedew</button>   */}
@@ -163,7 +156,7 @@ export const Login = () => {
           </Formik>
         </Container>
       </Box>
-    </>
+    </div>
   );
 };
 

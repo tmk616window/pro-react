@@ -13,9 +13,9 @@ const Home: NextPage = () => {
   return (
     <>
           <Navbar/>
-          <Register/>
+          {/* <Register/> */}
           {/* <Login/> */}
-          {/* <TaskList/> */}
+          <TaskList/>
           {/* <Top/> */}
 
     </>
