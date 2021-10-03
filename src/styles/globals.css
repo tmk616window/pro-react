@@ -12314,3 +12314,7 @@ max-height: 120px; */
   font-weight: bold;
   color: white;
 }
+
+.profile-details{
+  background-color:red;
+}

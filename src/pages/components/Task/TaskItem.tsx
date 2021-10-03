@@ -1,17 +1,17 @@
-// import React, { Component } from "react";
-// import {TaskList} from './TaskList'
+import React, { Component } from "react";
+import {TaskList} from './TaskList'
 
-// interface TaskItemProps {
-//     taskItem: string
-// }
+interface TaskItemProps {
+    taskItem: string
+}
 
 
-// export const TaskItem: React.FC<TaskItemProps> = ({taskItem}) => {
+export const TaskItem: React.FC<TaskItemProps> = ({taskItem}) => {
   
-//     return (
-//             <li className="list-group-item list-group-item-primary">
-//                 {taskItem}
-//             </li>
-//     );
-//   }
+    return (
+            <li className="list-group-item list-group-item-primary">
+                {taskItem}
+            </li>
+    );
+  }
 

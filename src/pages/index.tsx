@@ -8,6 +8,7 @@ import Link from 'next/link';
 // import {ActiveLink} from './api/ActiveLink'
 import {Login} from './components/Login'
 import {Register} from './components/Register'
+import {ProfilePage} from './components/ProfilePage'
 
 const Home: NextPage = () => {
   return (
@@ -15,8 +16,9 @@ const Home: NextPage = () => {
           <Navbar/>
           {/* <Register/> */}
           {/* <Login/> */}
-          <TaskList/>
+          {/* <TaskList/> */}
           {/* <Top/> */}
+          <ProfilePage/>
 
     </>
   )
