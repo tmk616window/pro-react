@@ -1,4 +1,5 @@
-// import moment from 'moment';
+import Logo from '../../../img/logo.png'
+import Image from 'next/image'
 import {
     Avatar,
     Box,
@@ -30,17 +31,11 @@ import {
             flexDirection: 'column'
           }}
         >
-          <Avatar
-            // src={user.avatar}
-            // sx={{
-            //   height: 100,
-            //   width: 100
-            // }}
-          />
+          <Image src={Logo} height="800"/>
           <Typography
             color="textPrimary"
             gutterBottom
-            variant="p"
+            variant="h5"
           >
             {user.name}
           </Typography>

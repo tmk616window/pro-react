@@ -1,4 +1,7 @@
 import { useState } from 'react';
+import Logo from '../../../img/logo.png'
+import Image from 'next/image'
+
 import {
   Box,
   Button,
@@ -53,13 +56,23 @@ export const TaskDetails = (props: any) => {
             container
             spacing={3}
           >
+
             <Grid
               item
               md={12}
               xs={12}
             >
-                、dl３、ld、３、dl３、ld、３、dl、dl３、ld、３、dl３、ld、３、dl３、ld、３、dl３、ld、３、dl３、ld、３、dl３、ld、３、dl３、ld、３、dl３、ld、３、dl３、ld、３、dl３、ld、３、dl３、ld、３、dl３、ld、３、dl３、ld、３、dl３、ld、３、dl３、ld、３、dl３、ld、３、dl３、ld、３、dl３、ld、３、dl３、ld、３、dl３、ld、３、dl３、ld、３、dl３、ld、３、dl３、ld、３、dl３、ld、３３、ld、３、dl３、ld、３、dl３、ld、３、dl３、ld、３
+              <Image src={Logo} height="800"/>
             </Grid>
+            <Grid
+              item
+              md={12}
+              xs={12}
+            >
+              <h3>概要</h3>
+                <p>、dl３、ld、３、dl３、ld、３、dl、dl３、ld、３、dl３、ld、３、dl３、ld、３、dl３、ld、３、dl３、ld、３、dl３、ld、３、dl３、ld、３、dl３、ld、３、dl３、ld、３、dl３、ld、３、dl３、ld、３、dl３、ld、３、dl３、ld、３、dl３、ld、３、dl３、ld、３、dl３、ld、３、dl３、ld、３、dl３、ld、３、dl３、ld、３、dl３、ld、３、dl３、ld、３、dl３、ld、３、dl３、ld、３、dl３、ld、３３、ld、３、dl３、ld、３、dl３、ld、３、dl３、ld、３</p>
+            </Grid>
+
             <Grid
               item
               md={12}
@@ -147,7 +160,7 @@ export const TaskDetails = (props: any) => {
             color="secondary"
             variant="contained"
           >
-            Save details
+            保存
           </Button>
         </Box>
       </Card>

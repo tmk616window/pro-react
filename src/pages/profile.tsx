@@ -3,10 +3,12 @@ import {
   Container,
   Grid
 } from '@material-ui/core';
-import {AccountProfile} from './Account/AccountProfile';
-import {AccountProfileDetails} from './Account/AccountProfileDetails';
+import {AccountProfile} from './components/Account/AccountProfile';
+import {AccountProfileDetails} from './components/Account/AccountProfileDetails';
 
-export const ProfilePage = () => (
+export default function ProfilePage() {
+
+  return (
   <>
   <br/>
   <br/>
@@ -40,6 +42,7 @@ export const ProfilePage = () => (
             xs={12}
           >
             <AccountProfileDetails />
+
           </Grid>
         </Grid>
         <br/>
@@ -55,4 +58,5 @@ export const ProfilePage = () => (
     </Box>
   </>
 );
+}
 
