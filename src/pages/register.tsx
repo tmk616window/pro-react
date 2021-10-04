@@ -1,5 +1,7 @@
 import * as Yup from 'yup';
 import { Formik } from 'formik';
+import Image from 'next/image'
+import Regi from '../img/register.png'
 import {
   Box,
   Button,
@@ -13,23 +15,15 @@ import {
 
 
 
-export const Register = () => {
+export default function Register() {
 
 let style = {
-    backgroundColor: "#13EEFF",
-    margin: "50px 0px 0px 0px",
-    padding: "140px 0px 160px 0px"
+  margin: "100px 0px 0px 0px"
 };
-
-// let form = {
-//   border: "1px solid #49cde8"
-// };
-
 
 
   return (
     <div style={style}>
-
       <Box
         sx={{
           display: 'flex',
@@ -48,15 +42,13 @@ let style = {
               policy: false
             }}
             validationSchema={
-              Yup.object().shape({
-                email: Yup.string().email('Must be a valid email').max(255).required('Email is required'),
-                firstName: Yup.string().max(255).required('First name is required'),
-                lastName: Yup.string().max(255).required('Last name is required'),
-                password: Yup.string().max(255).required('password is required'),
-                policy: Yup.boolean().oneOf([true], 'This field must be checked')
-              })
-            }
+            Yup.object().shape({
+              email: Yup.string().email('Must be a valid email').max(255).required('メールアドレスを入力してください'),
+              password: Yup.string().max(255).required('パスワードを入力してください'),
+            })
+          }
             onSubmit={() => {
+              // navigate('/app/dashboard', { replace: true });
             }}
           >
             {({
@@ -74,70 +66,53 @@ let style = {
                     color="textPrimary"
                     variant="h2"
                   >
-                    Create new account
+                    アカウント作成
                   </Typography>
+                  <Box
+                  sx={{
+                    pb: 1,
+                    pt: 3
+                  }}
+                >
                   <Typography
+                    align="center"
                     color="textSecondary"
-                    gutterBottom
-                    variant="body2"
+                    variant="body1"
                   >
-                    Use your email to create new account
+                    <Image src={Regi} width="140" height="140"/>
                   </Typography>
+                </Box>
                 </Box>
                 <TextField
                   error={Boolean(touched.email && errors.email)}
                   fullWidth
                   helperText={touched.email && errors.email}
-                  label="Email Address"
+                  label="メールアドレス"
                   margin="normal"
                   name="email"
                   onBlur={handleBlur}
                   onChange={handleChange}
                   type="email"
                   value={values.email}
-                  variant="standard"
+                  variant="outlined"
                 />
                 <TextField
                   error={Boolean(touched.password && errors.password)}
                   fullWidth
                   helperText={touched.password && errors.password}
-                  label="Password"
+                  label="パスワード"
                   margin="normal"
                   name="password"
                   onBlur={handleBlur}
                   onChange={handleChange}
                   type="password"
                   value={values.password}
-                  variant="standard"
+                  variant="outlined"
                 />
-                <Box
-                  sx={{
-                    alignItems: 'center',
-                    display: 'flex',
-                    ml: -1
-                  }}
-                >
-                  <Checkbox
-                    checked={values.policy}
-                    name="policy"
-                    onChange={handleChange}
-                  />
-                  <Typography
-                    color="textSecondary"
-                    variant="body1"
-                  >
-                    I have read the
-                    {' '}
-                    <Link
-                    >
-                      Terms and Conditions
-                    </Link>
-                  </Typography>
-                </Box>
                 {Boolean(touched.policy && errors.policy) && (
-                  <FormHelperText error>
-                    {errors.policy}
-                  </FormHelperText>
+                <FormHelperText error>
+                  {errors.policy}
+                </FormHelperText>
                 )}
                 <Box sx={{ py: 2 }}>
                   <Button
@@ -148,18 +123,17 @@ let style = {
                     type="submit"
                     variant="contained"
                   >
-                    Sign up now
+                    アカウント作成
                   </Button>
                 </Box>
                 <Typography
                   color="textSecondary"
                   variant="body1"
                 >
-                  Have an account?
+                  アカウントをお持ちですか？
                   {' '}
-                  <Link
-                  >
-                    Sign in
+                  <Link >
+                    ログイン
                   </Link>
                 </Typography>
               </form>

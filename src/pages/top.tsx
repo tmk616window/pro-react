@@ -1,12 +1,12 @@
-import Post from '../../img/post.jpg'
-import Ranking from '../../img/ranking.jpg'
-import Hire from '../../img/hire.jpg'
+import Post from '../img/post.jpg'
+import Ranking from '../img/ranking.jpg'
+import Hire from '../img/hire.jpg'
 // import { Card, Icon,  } from 'semantic-ui-react'
 import Image from 'next/image'
 import Link from 'next/link';
 // import '../styles/globals.css'
 
-export const Top = () => {
+export default function Top() {
   return (
 
     <div className="App">

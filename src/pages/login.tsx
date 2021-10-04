@@ -1,7 +1,10 @@
 // import { Link as RouterLink, useNavigate } from 'react-router-dom';
 // import { Helmet } from 'react-helmet';
 import * as Yup from 'yup';
+import Image from 'next/image'
 import { Formik } from 'formik';
+import LogIn from '../img/login.png'
+
 import {
   Box,
   Button,
@@ -12,16 +15,17 @@ import {
   Typography
 } from '@material-ui/core';
 let style = {
-  backgroundColor: "#13EEFF",
+  // backgroundColor: "#13EEFF",
   margin: "100px 0px 0px 0px",
-  padding: "200px 0px 190px 0px"
+  // padding: "200px 0px 190px 0px"
 };
 
-export const Login = () => {
+export default function Login() {
 //   const navigate = useNavigate();
 
   return (
     <div style={style}>
+    <>
       <Box
         sx={{
           display: 'flex',
@@ -33,33 +37,33 @@ export const Login = () => {
         <Container maxWidth="sm">
           <Formik
             initialValues={{
-              email: 'demo@devias.io',
-              password: 'Password123'
+              email: '',
+              password: ''
             }}
             validationSchema={Yup.object().shape({
-              email: Yup.string().email('Must be a valid email').max(255).required('Email is required'),
-              password: Yup.string().max(255).required('Password is required')
+              email: Yup.string().email('Must be a valid email').max(255).required('メールアドレスを入力してください'),
+              password: Yup.string().max(255).required('パスワードを入力してください')
             })}
             onSubmit={() => {
-            //   navigate('', { replace: true });
+              // navigate('/app/dashboard', { replace: true });
             }}
           >
             {({
-            //   errors,
-            //   handleBlur,
-            //   handleChange,
-            //   handleSubmit,
-            //   isSubmitting,
-            //   touched,
-            //   values
+              errors,
+              handleBlur,
+              handleChange,
+              handleSubmit,
+              isSubmitting,
+              touched,
+              values
             }) => (
-              <form >
+              <form onSubmit={handleSubmit}>
                 <Box sx={{ mb: 3 }}>
                   <Typography
                     color="textPrimary"
-                    variant="h2"
+                    variant="h3"
                   >
-                    Sign in
+                    ログイン
                   </Typography>
                   <Typography
                     color="textSecondary"
@@ -68,38 +72,6 @@ export const Login = () => {
                   >
                   </Typography>
                 </Box>
-                <Grid
-                  container
-                  spacing={3}
-                >
-                  {/* <Grid
-                    item
-                    xs={12}
-                    md={6}
-                  >
-                    <Button
-                      color="primary"
-                      fullWidth
-                      size="large"
-                      variant="contained"
-                    >
-                      Login with Facebook
-                    </Button>
-                  </Grid> */}
-                  {/* <Grid
-                    item
-                    xs={12}
-                    md={6}
-                  >
-                    <Button
-                      fullWidth
-                      size="large"
-                      variant="contained"
-                    >
-                      Login with Google
-                    </Button>
-                  </Grid> */}
-                </Grid>
                 <Box
                   sx={{
                     pb: 1,
@@ -111,44 +83,55 @@ export const Login = () => {
                     color="textSecondary"
                     variant="body1"
                   >
+                    <Image src={LogIn} width="100" height="100"/>
                   </Typography>
                 </Box>
                 <TextField
+                  error={Boolean(touched.email && errors.email)}
                   fullWidth
-                  label="Email Address"
+                  helperText={touched.email && errors.email}
+                  label="メールアドレス"
                   margin="normal"
                   name="email"
+                  onBlur={handleBlur}
+                  onChange={handleChange}
                   type="email"
-                  variant="standard"
+                  value={values.email}
+                  variant="outlined"
                 />
                 <TextField
+                  error={Boolean(touched.password && errors.password)}
                   fullWidth
-                  label="Password"
+                  helperText={touched.password && errors.password}
+                  label="パスワード"
                   margin="normal"
                   name="password"
+                  onBlur={handleBlur}
+                  onChange={handleChange}
                   type="password"
-                  variant="standard"
+                  value={values.password}
+                  variant="outlined"
                 />
                 <Box sx={{ py: 2 }}>
-                  {/* <button width="100">dedew</button>   */}
                   <Button
                     color="secondary"
+                    disabled={isSubmitting}
                     fullWidth
                     size="large"
                     type="submit"
                     variant="contained"
                   >
-                    Sign in now
+                    ログイン
                   </Button>
                 </Box>
                 <Typography
                   color="textSecondary"
                   variant="body1"
                 >
-                  Don&apos;t have an account?
+                  アカウントをお持ちですか?
                   {' '}
-                  <Link>
-                    Sign up
+                  <Link >
+                    ログイン
                   </Link>
                 </Typography>
               </form>
@@ -156,6 +139,7 @@ export const Login = () => {
           </Formik>
         </Container>
       </Box>
+    </>
     </div>
   );
 };

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 // import './task.css'
 import Image from 'next/image'
-import Logo from '../../../img/logo.png'
+import Logo from '../img/logo.png'
 
 export const TaskList = () => {
   let listItem = {
