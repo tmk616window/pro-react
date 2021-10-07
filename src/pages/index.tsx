@@ -4,6 +4,7 @@ import Image from 'next/image'
 import {Navbar} from './components/Navbar'
 import Link from 'next/link';
 import { useRouter } from 'next/router'
+import Top from './top'
 
 const Home: NextPage = () => {
   const router = useRouter()
@@ -11,29 +12,9 @@ const Home: NextPage = () => {
 
   return (
     <>
-
           <Navbar/>
           <br/>
-          <br/>
-          <br/>
-          <br/>
-          <br/>
-          <br/>
-          <br/>
-          <br/>
-          <br/>
-          <br/>
-          <br/>
-          <br/>
-
-          <span onClick={() => router.push('/top')}>Click me</span>
-          {/* <Register/> */}
-          {/* <Login/> */}
-          {/* <TaskList/> */}
-          {/* <Top/> */}
-          {/* <ProfilePage/> */}
-          {/* <Task/> */}
-
+          <Top/>
     </>
   )
 }

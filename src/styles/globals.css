@@ -12309,7 +12309,20 @@ max-height: 120px; */
   padding: 10px 15px 10px 15px;
   border-radius: 15%;
   margin-right: 10px;
-  display: inline;
+  display: inline-block;
+  margin-bottom: 5px;
+  font-size: large;
+  font-weight: bold;
+  color: white;
+}
+
+.toolArticle{
+  background-color: rgb(111, 111, 255);
+  padding: 10px 15px 10px 15px;
+  border-radius: 15%;
+  margin-right: 10px;
+  display: inline-block;
+  margin-bottom: 5px;
   font-size: large;
   font-weight: bold;
   color: white;
@@ -12317,4 +12330,10 @@ max-height: 120px; */
 
 .profile-details {
   background-color: rgb(251, 251, 251);
+  margin: 5px 5px 5px 5px;
+}
+
+.langArticle {
+  margin: 1px;
+  display: inline-block;
 }

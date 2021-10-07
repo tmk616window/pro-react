@@ -143,6 +143,32 @@ export const AccountProfileDetails = (props: any) => {
                 ))}
               </TextField>
             </Grid>
+
+            <Grid
+            item
+            lg={12}
+            md={12}
+            xs={12}
+          >
+            <p>使用プログラミング言語</p>
+            <p className="article">vue.js</p>
+            <p className="article">vue.js</p>
+            <p className="article">vue.js</p>
+            <p className="article">vue.js</p>
+            <p className="article">vue.js</p>
+            <p className="article">vue.js</p>
+            <p className="article">vue.js</p>
+            <p className="article">vue.js</p>
+            <p className="article">vue.js</p>
+            <p className="article">vue.js</p>
+            <p className="article">vue.js</p>
+            <p className="article">vue.js</p>
+            <p className="article">vue.js</p>
+            <p className="article">vue.js</p>
+            <p className="article">vue.js</p>
+
+          </Grid>
+
             <Grid
             item
             lg={12}

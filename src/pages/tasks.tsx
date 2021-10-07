@@ -32,10 +32,20 @@ export const TaskList = () => {
                 <p>ポートフォリオ概要</p>
                 <p className="description">dkopkdomxklんmkおxsんwこcんwkpmんqkpmwkpqmdpwqmpwんmqpdmんwqkpmpおwqもpwqもpもpqwdmんどpqpekwopddejwopjdeopjopdew</p>
                 <p>使用技術</p>
-                <p className="article">vue</p>
-                <p className="article">vue</p>
-                <p className="article">vue</p>
-                <p className="article">vue</p>
+                <div className="langArticle">
+                <span className="article">vue</span>
+                <span className="article">vue</span>
+                <span className="article">vue</span>
+                <span className="article">vue</span>
+                <span className="article">vue</span>
+                <span className="article">vue</span>
+                <span className="article">vue</span>
+                <span className="article">vue</span>
+                <span className="article">vue</span>
+                <span className="article">vue</span>
+                <span className="article">vue</span>
+                </div>
+
               </div>
             </li>
           ))}
