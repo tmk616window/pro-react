@@ -1,9 +1,10 @@
-// import { Link as RouterLink, useNavigate } from 'react-router-dom';
-// import { Helmet } from 'react-helmet';
 import * as Yup from 'yup';
 import Image from 'next/image'
 import { Formik } from 'formik';
 import LogIn from '../img/login.png'
+import Cookies from "js-cookie"
+import {SignInParams} from '../src/type/interfaces'
+import { signIn } from "../src/api/login/auth";
 
 import {
   Box,
@@ -20,8 +21,30 @@ let style = {
   // padding: "200px 0px 190px 0px"
 };
 
-export default function Login() {
-//   const navigate = useNavigate();
+
+
+const Login: React.FC = () => {
+
+  // const { setIsSignedIn, setCurrentUser } = useContext(AuthContext)
+
+  const handleSubmit = async (params:SignInParams) => {
+    console.log(params)
+    const res = await signIn(params)
+    console.log(res)
+
+    if (res.status === 200) {
+      console.log("成功")
+    }
+      Cookies.set("_access_token", res.headers["access-token"])
+      Cookies.set("_client", res.headers["client"])
+      Cookies.set("_uid", res.headers["uid"])
+
+      // setIsSignedIn(true)
+      // setCurrentUser(res.data.data)
+
+
+}
+
 
   return (
     <div style={style}>
@@ -41,12 +64,10 @@ export default function Login() {
               password: ''
             }}
             validationSchema={Yup.object().shape({
-              email: Yup.string().email('Must be a valid email').max(255).required('メールアドレスを入力してください'),
+              email: Yup.string().email('メールアドレスを入力してください').max(255).required('メールアドレスを入力してください'),
               password: Yup.string().max(255).required('パスワードを入力してください')
             })}
-            onSubmit={() => {
-              // navigate('/app/dashboard', { replace: true });
-            }}
+            onSubmit={handleSubmit}
           >
             {({
               errors,
@@ -115,7 +136,7 @@ export default function Login() {
                 <Box sx={{ py: 2 }}>
                   <Button
                     color="secondary"
-                    disabled={isSubmitting}
+                    // disabled={isSubmitting}
                     fullWidth
                     size="large"
                     type="submit"
@@ -144,3 +165,4 @@ export default function Login() {
   );
 };
 
+export default Login
