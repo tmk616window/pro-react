@@ -1,5 +1,6 @@
 import {client, authClient} from "../common/client"
 import Cookies from "js-cookie"
+import axios from 'axios'
 
 import { SignUpParams, SignInParams } from "../../type/interfaces"
 
@@ -14,12 +15,12 @@ export const signIn = (params: SignInParams)  => {
 }
 
 // サインアウト（ログアウト）
-export const signOut = () => {
-  return authClient.delete("auth/sign_out")  
+export const signOut = (params:any) => {
+  return axios.delete("http://localhost/api/v1/auth/sign_out", {headers: params})  
 }
 
 // 認証済みのユーザーを取得
-export const getCurrentUser = () => {
+export const getCurrentUser = (params:any) => {
   if (!Cookies.get("_access_token") || !Cookies.get("_client") || !Cookies.get("_uid")) return
-  return authClient.get("/auth/sessions", )
+  return axios.get("http://localhost/api/v1/auth/sessions", {params: params,headers:params})
 }

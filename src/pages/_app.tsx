@@ -6,6 +6,12 @@ import React, { useState, useEffect, createContext } from "react"
 import { User } from "../src/type/interfaces"
 import {getCurrentUser} from '../src/api/login/auth'
 import {useRouter} from 'next/router'
+import Top from './top'
+import Register from './register'
+import Login from './login'
+import {execTest} from '../src/api/test'
+import Cookies from "js-cookie"
+
 
 export const AuthContext = createContext({} as {
   loading: boolean
@@ -21,15 +27,31 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   const router = useRouter()
 
-  const [loading, setLoading] = useState<boolean>(true)
   const [isSignedIn, setIsSignedIn] = useState<boolean>(false)
   const [currentUser, setCurrentUser] = useState<User | undefined>()
+  const [loading, setLoading] = useState<boolean>(false)
+
 
   const handleGetCurrentUser = async () => {
-    try {
-      const res = await getCurrentUser()
 
-      if (res?.data.isLogin === true) {
+    try {
+
+      const _access_token = Cookies.get("_access_token")
+      const _client = Cookies.get("_client")
+      const _uid = Cookies.get("_uid")
+      
+      const params = {
+        "access-token": _access_token,
+        "client": _client,
+        "uid": _uid    
+      }
+
+
+      const res = await getCurrentUser(params)
+      console.log(res)
+      console.log(res.data.is_login)
+
+      if (res?.data.is_login === true) {
         setIsSignedIn(true)
         setCurrentUser(res?.data.data)
 
@@ -40,15 +62,17 @@ function MyApp({ Component, pageProps }: AppProps) {
     } catch (err) {
       console.log(err)
     }
-
     setLoading(false)
+
   }
 
   useEffect(() => {
+    execTest()
+    console.log()
     handleGetCurrentUser()
   }, [setCurrentUser])
 
-  const Private = ({ children }: { children: React.ReactElement }) => {
+  const Private = ({ children }: any) => {
     if (!loading) {
       if (isSignedIn) {
         return children
@@ -63,10 +87,10 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   return (
     <>
-    <AuthContext.Provider value={{ loading, setLoading, isSignedIn, setIsSignedIn, currentUser, setCurrentUser}}>
-      <Navbar/>
-      <Component {...pageProps} />
-    </AuthContext.Provider>
+      <AuthContext.Provider value={{ loading, setLoading, isSignedIn, setIsSignedIn, currentUser, setCurrentUser}}>
+          <Navbar/>
+            <Component {...pageProps} />
+      </AuthContext.Provider>
     </>
   )
 }

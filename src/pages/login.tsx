@@ -5,6 +5,9 @@ import LogIn from '../img/login.png'
 import Cookies from "js-cookie"
 import {SignInParams} from '../src/type/interfaces'
 import { signIn } from "../src/api/login/auth";
+import { AuthContext } from "./_app"
+import React, { useState, useContext } from "react"
+
 
 import {
   Box,
@@ -25,30 +28,47 @@ let style = {
 
 const Login: React.FC = () => {
 
-  // const { setIsSignedIn, setCurrentUser } = useContext(AuthContext)
+  const { setIsSignedIn, setCurrentUser } = useContext(AuthContext)
 
   const handleSubmit = async (params:SignInParams) => {
     console.log(params)
-    const res = await signIn(params)
-    console.log(res)
 
-    if (res.status === 200) {
-      console.log("成功")
+    try {
+      const res = await signIn(params)
+      console.log(res)
+
+      if (res.status === 200) {
+        // ログインに成功した場合はCookieに各値を格納
+        Cookies.set("_access_token", res.headers["access-token"])
+        Cookies.set("_client", res.headers["client"])
+        Cookies.set("_uid", res.headers["uid"])
+
+        setIsSignedIn(true)
+        setCurrentUser(res.data)
+
+        // history.push("/")
+
+        console.log("Signed in successfully!")
+      } else {
+        // setAlertMessageOpen(true)
+      }
+    } catch (err) {
+      console.log(err)
+      // setAlertMessageOpen(true)
     }
-      Cookies.set("_access_token", res.headers["access-token"])
-      Cookies.set("_client", res.headers["client"])
-      Cookies.set("_uid", res.headers["uid"])
-
-      // setIsSignedIn(true)
-      // setCurrentUser(res.data.data)
 
 
 }
 
 
   return (
-    <div style={style}>
+    <div>
     <>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+
       <Box
         sx={{
           display: 'flex',

@@ -6,7 +6,7 @@ const env = 0
 
 export const client: AxiosInstance = axios.create({
     baseURL: 'http://localhost/api/v1/',
-    headers: {'Content-Type': 'application/json' },
+    headers: {'Content-Type': 'application/json','Access-Control-Allow-Origin':"*" },
     responseType: 'json',
   });
 

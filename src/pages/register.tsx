@@ -1,9 +1,12 @@
+import React, { useState, useContext } from "react"
 import * as Yup from 'yup';
 import { Formik } from 'formik';
 import Cookies from "js-cookie"
 import { signUp } from "../src/api/login/auth"
 import { SignUpParams } from "../src/type/interfaces"
 import Image from 'next/image'
+import { AuthContext } from "./_app"
+
 import Regi from '../img/register.png'
 import {
   Box,
@@ -18,16 +21,18 @@ import {
 
 
 
-const SignUp = () => {
-let style = {
+const Register = () => {
+
+  const { setIsSignedIn, setCurrentUser, currentUser } = useContext(AuthContext)
+
+
+  let style = {
   margin: "100px 0px 0px 0px"
 };
 
 const handleSubmit = async (params:SignUpParams) => {
   // e.preventDefault()
 
-  const res = await signUp(params)
-  console.log(res)
 
   try {
     const res = await signUp(params)
@@ -39,8 +44,9 @@ const handleSubmit = async (params:SignUpParams) => {
       Cookies.set("_client", res.headers["client"])
       Cookies.set("_uid", res.headers["uid"])
 
-      // setIsSignedIn(true)
-      // setCurrentUser(res.data)
+      setIsSignedIn(true)
+      setCurrentUser(res.data.data)
+      console.log(currentUser)
 
       // histroy.push("/")
 
@@ -57,7 +63,11 @@ const handleSubmit = async (params:SignUpParams) => {
 
 
   return (
-    <div style={style}>
+    <div>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
       <Box
         sx={{
           display: 'flex',
@@ -184,4 +194,4 @@ const handleSubmit = async (params:SignUpParams) => {
   );
 };
 
-export default SignUp
+export default Register
