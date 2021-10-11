@@ -85,6 +85,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   }
 
 
+
   return (
     <>
       <AuthContext.Provider value={{ loading, setLoading, isSignedIn, setIsSignedIn, currentUser, setCurrentUser}}>

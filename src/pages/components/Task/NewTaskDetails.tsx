@@ -125,7 +125,7 @@ export const NewTaskDetails = (props: any) => {
                             label="タイトル"
                             name="タイトル"
                             required
-                            onChange={changeHand}
+                            // onChange={changeHand}
                             value={c.title}
                             variant="outlined"
                             />
