@@ -1,3 +1,5 @@
+import {useEffect} from 'react'
+import {getProLangs} from '../src/api/prolang/GetProLang'
 import {
     Box,
     Container,
@@ -8,7 +10,15 @@ import {
   import {TaskProlangs} from './components/Task/TaskProlangs'
   import {TaskTools} from './components/Task/TaskTools'
 
+
   export default function Task() {
+
+    useEffect( () => {
+      getProLangs()
+      console.log(getProLangs())
+
+    }, [])
+  
 
     return(
       <>

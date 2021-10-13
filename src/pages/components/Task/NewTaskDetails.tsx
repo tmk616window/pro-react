@@ -35,16 +35,17 @@ type content = {
 
 export const NewTaskDetails = (props: any) => {
   const [contents, setContents] = useState<content[]>([{title:"", text:""}])
-  // const [content, setContent] =useState<content>({title:"", text:""})
+  const [content, setContent] =useState<content>({title:"", text:""})
 
   const addContent = () => {
     setContents([...contents, {title:"", text:""}]);
     console.log(contents)
     };
 
-    const changeHandle = (e: any, index:number) => {
-      // contents[index] = e.target.value
-      // setContents(...contents, contents[0])
+    const changeHandle = (key: string, value: string, index:number) => {
+      const _contents = [...contents]
+      _contents[index] = {...contents[index], [key]: value}
+      setContents(_contents)
     }
   
   const changeHand = (e: any) => {
@@ -125,7 +126,9 @@ export const NewTaskDetails = (props: any) => {
                             label="タイトル"
                             name="タイトル"
                             required
-                            // onChange={changeHand}
+                            onChange={(event) => {
+                              　      changeHandle("title", event.target.value, index);
+                              　    }}
                             value={c.title}
                             variant="outlined"
                             />
@@ -136,7 +139,9 @@ export const NewTaskDetails = (props: any) => {
                             fullWidth
                             label="コンテンツ"
                             name="コンテンツ"
-                            // onChange={changeHandle}                
+                            onChange={(event) => {
+                              　      changeHandle("text", event.target.value, index);
+                              　    }}
                             required
                             value={c.text}
                             variant="outlined"

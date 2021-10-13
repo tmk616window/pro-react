@@ -11,7 +11,8 @@ import Register from './register'
 import Login from './login'
 import {execTest} from '../src/api/test'
 import Cookies from "js-cookie"
-
+import {getTasks} from '../src/api/task/GetTasks'
+import {Task} from '../src/type/interfaces/task'
 
 export const AuthContext = createContext({} as {
   loading: boolean
@@ -30,12 +31,11 @@ function MyApp({ Component, pageProps }: AppProps) {
   const [isSignedIn, setIsSignedIn] = useState<boolean>(false)
   const [currentUser, setCurrentUser] = useState<User | undefined>()
   const [loading, setLoading] = useState<boolean>(false)
-
+  
 
   const handleGetCurrentUser = async () => {
-
+    
     try {
-
       const _access_token = Cookies.get("_access_token")
       const _client = Cookies.get("_client")
       const _uid = Cookies.get("_uid")
@@ -45,7 +45,6 @@ function MyApp({ Component, pageProps }: AppProps) {
         "client": _client,
         "uid": _uid    
       }
-
 
       const res = await getCurrentUser(params)
       console.log(res)

@@ -1,9 +1,64 @@
-import React, { Component } from "react";
-// import './task.css'
+import React, { useEffect, useState } from "react";
+import {getTasks} from '../src/api/task/GetTasks'
 import Image from 'next/image'
 import Logo from '../img/logo.png'
+import {Task} from '../src/type/interfaces/task'
 
 export const TaskList = () => {
+  
+  const[tasks, setTasks] = useState<Task[]>()
+
+  
+  const handleGetTasks = async () => {
+
+    try {
+      const res = await getTasks()
+      console.log(res.data.tasks)
+
+      if (res?.status === 200) {
+        const Tasks = res.data.tasks
+        console.log("dem",res.data.tasks)
+        console.log("tasks", Tasks)
+        setTasks(Tasks)
+      } else {
+        
+      }
+    } catch (err) {
+      console.log(err)
+    }
+
+  }
+
+  useEffect( () => {
+    handleGetTasks()    
+  }, [])
+  
+  useEffect( () => {
+    async function fetchEmployees() {
+    try {
+      const res = await getTasks()
+      console.log(res.data.tasks)
+
+      if (res?.status === 200) {
+        const Tasks = res.data.tasks
+        // setTasks("defrefre")
+        console.log("dem",res.data.tasks)
+        console.log("tasks", Tasks)
+        setTasks(Tasks)
+        console.log("ndjindjienwijde", tasks)
+
+      } else {
+        
+      }
+    } catch (err) {
+      console.log(err)
+    }
+  }
+  fetchEmployees()
+  }, [])
+
+
+
   let listItem = {
     margin: "10px 20px 20px 20px",
   }
