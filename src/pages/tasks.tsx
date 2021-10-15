@@ -29,33 +29,6 @@ export const TaskList = () => {
 
   }
 
-  useEffect( () => {
-    handleGetTasks()    
-  }, [])
-  
-  useEffect( () => {
-    async function fetchEmployees() {
-    try {
-      const res = await getTasks()
-      console.log(res.data.tasks)
-
-      if (res?.status === 200) {
-        const Tasks = res.data.tasks
-        // setTasks("defrefre")
-        console.log("dem",res.data.tasks)
-        console.log("tasks", Tasks)
-        setTasks(Tasks)
-        console.log("ndjindjienwijde", tasks)
-
-      } else {
-        
-      }
-    } catch (err) {
-      console.log(err)
-    }
-  }
-  fetchEmployees()
-  }, [])
 
 
 

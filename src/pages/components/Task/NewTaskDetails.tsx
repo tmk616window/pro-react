@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import Logo from '../../../img/logo.png'
 import Image from 'next/image'
 
 import {
@@ -10,6 +9,7 @@ import {
   CardHeader,
   Divider,
   Grid,
+  TextareaAutosize,
   TextField
 } from '@material-ui/core';
 
@@ -33,10 +33,9 @@ type content = {
     text: string
 }
 
-export const NewTaskDetails = (props: any) => {
+export const NewTaskDetails = () => {
   const [contents, setContents] = useState<content[]>([{title:"", text:""}])
-  const [content, setContent] =useState<content>({title:"", text:""})
-
+  const [image, setImage] = useState()
   const addContent = () => {
     setContents([...contents, {title:"", text:""}]);
     console.log(contents)
@@ -48,26 +47,14 @@ export const NewTaskDetails = (props: any) => {
       setContents(_contents)
     }
   
-  const changeHand = (e: any) => {
-    setContents(e.target.value)
-  }
 
-  const removeContent = (index:number) => {
-    setContents(contents.splice(index, index));
-  }
+  // const removeContent = (index:number) => {
+  //   setContents(contents.splice(index, index));
+  // }
 
   const deleteContent = (id:number) => {
     setContents(contents.filter((_, i) => i !== id))
   }
-
-
-  const contenthandleChange = (event: any) => {
-    setContents({
-      ...contents,
-      [event.target.contents]: event.target.value
-    });
-  };
-
 
   const [values, setValues] = useState({
     email: 'demo@devias.io',
@@ -81,6 +68,13 @@ export const NewTaskDetails = (props: any) => {
       [event.target.name]: event.target.value
     });
   };
+
+  const handleImageChange = (event: any) => {
+    const imageFile = event.target.files[0];
+    const imageUrl = URL.createObjectURL(imageFile);
+    setImage(imageUrl)
+ }
+ 
 
   return (
       <Card>
@@ -110,8 +104,46 @@ export const NewTaskDetails = (props: any) => {
               md={12}
               xs={12}
             >
-              <Image src={Logo} height="800"/>
+
+              <Button
+                  component="label"
+                >
+                ロゴ画像を貼ってください
+                  <input type="file" accept="image/*" onChange={handleImageChange}/>
+              </Button>
+              <img src={image} height="450" width="100%"/>
+              {/* <Image src={image} height="800"/> */}
             </Grid>
+
+            <Grid
+              item
+              md={12}
+              xs={12}
+            >
+              <p>作品URL</p>
+              <TextField
+                fullWidth
+                label="作品URL"
+                name="作品URL"
+                required
+                // value={}
+                variant="outlined"
+              />
+
+            </Grid>
+
+            <Grid
+              item
+              md={12}
+              xs={12}
+            >
+              <p>概要</p>
+              <TextareaAutosize
+                minRows={7}
+                style={{ width: "100%" }}
+              />
+            </Grid>
+    
                 <Button onClick={addContent}>追加</Button>
                 {contents.map((c:{title:string, text:string}, index:number) => (
                     <Grid
@@ -135,90 +167,18 @@ export const NewTaskDetails = (props: any) => {
                         <br/>
                         <br/>
 
-                        <TextField
-                            fullWidth
-                            label="コンテンツ"
-                            name="コンテンツ"
-                            onChange={(event) => {
-                              　      changeHandle("text", event.target.value, index);
-                              　    }}
-                            required
-                            value={c.text}
-                            variant="outlined"
+                        <TextareaAutosize
+                        // label="コンテンツ"
+                        name="コンテンツ"
+                        onChange={(event) => {
+                          　      changeHandle("text", event.target.value, index);
+                          　    }}
+                          value={c.text}
+                          minRows={7}
+                          style={{ width: "100%" }}
                         />
                     </Grid>
                 ))}
-            <Grid
-              item
-              md={12}
-              xs={12}
-            >
-              <TextField
-                fullWidth
-                label="Twitterアカウント"
-                name="email"
-                onChange={handleChange}
-                required
-                value={values.email}
-                variant="outlined"
-              />
-            </Grid>
-            <Grid
-              item
-              md={6}
-              xs={12}
-            >
-              <TextField
-                fullWidth
-                label="年齢"
-                name="phone"
-                onChange={handleChange}
-                type="number"
-                // value={values.phone}
-                variant="outlined"
-              />
-            </Grid>
-            <Grid
-              item
-              md={6}
-              xs={12}
-            >
-              <TextField
-                fullWidth
-                label="職業"
-                name="職業"
-                onChange={handleChange}
-                required
-                value={values.country}
-                variant="outlined"
-              />
-            </Grid>
-            <Grid
-              item
-              md={6}
-              xs={12}
-            >
-              <TextField
-                fullWidth
-                label="在宅居住地"
-                name="在宅居住地"
-                onChange={handleChange}
-                required
-                select
-                SelectProps={{ native: true }}
-                // value={values.state}
-                variant="outlined"
-              >
-                {states.map((option) => (
-                  <option
-                    key={option.value}
-                    value={option.value}
-                  >
-                    {option.label}
-                  </option>
-                ))}
-              </TextField>
-            </Grid>
           </Grid>
           <Grid>
           </Grid>

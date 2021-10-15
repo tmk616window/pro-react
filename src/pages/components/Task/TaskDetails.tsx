@@ -69,80 +69,23 @@ export const TaskDetails = (props: any) => {
               md={12}
               xs={12}
             >
-              <h3>概要</h3>
-                <p>、dl３、ld、３、dl３、ld、３、dl、dl３、ld、３、dl３、ld、３、dl３、ld、３、dl３、ld、３、dl３、ld、３、dl３、ld、３、dl３、ld、３、dl３、ld、３、dl３、ld、３、dl３、ld、３、dl３、ld、３、dl３、ld、３、dl３、ld、３、dl３、ld、３、dl３、ld、３、dl３、ld、３、dl３、ld、３、dl３、ld、３、dl３、ld、３、dl３、ld、３、dl３、ld、３、dl３、ld、３、dl３、ld、３、dl３、ld、３３、ld、３、dl３、ld、３、dl３、ld、３、dl３、ld、３</p>
-            </Grid>
 
+            </Grid>
             <Grid
               item
               md={12}
               xs={12}
             >
-              <TextField
-                fullWidth
-                label="Twitterアカウント"
-                name="email"
-                onChange={handleChange}
-                required
-                value={values.email}
-                variant="outlined"
-              />
+              <h3>作品URL</h3>
+                <p>testtesttesttesttesttesttesttesttest</p>
             </Grid>
             <Grid
               item
-              md={6}
+              md={12}
               xs={12}
             >
-              <TextField
-                fullWidth
-                label="年齢"
-                name="phone"
-                onChange={handleChange}
-                type="number"
-                value={values.phone}
-                variant="outlined"
-              />
-            </Grid>
-            <Grid
-              item
-              md={6}
-              xs={12}
-            >
-              <TextField
-                fullWidth
-                label="職業"
-                name="職業"
-                onChange={handleChange}
-                required
-                value={values.country}
-                variant="outlined"
-              />
-            </Grid>
-            <Grid
-              item
-              md={6}
-              xs={12}
-            >
-              <TextField
-                fullWidth
-                label="在宅居住地"
-                name="在宅居住地"
-                onChange={handleChange}
-                required
-                select
-                SelectProps={{ native: true }}
-                value={values.state}
-                variant="outlined"
-              >
-                {states.map((option) => (
-                  <option
-                    key={option.value}
-                    value={option.value}
-                  >
-                    {option.label}
-                  </option>
-                ))}
-              </TextField>
+              <h3>概要</h3>
+                <p>、dl３、ld、３、dl３、ld、３、dl、dl３、ld、３、dl３、ld、３、dl３、ld、３、dl３、ld、３、dl３、ld、３、dl３、ld、３、dl３、ld、３、dl３、ld、３、dl３、ld、３、dl３、ld、３、dl３、ld、３、dl３、ld、３、dl３、ld、３、dl３、ld、３、dl３、ld、３、dl３、ld、３、dl３、ld、３、dl３、ld、３、dl３、ld、３、dl３、ld、３、dl３、ld、３、dl３、ld、３、dl３、ld、３、dl３、ld、３３、ld、３、dl３、ld、３、dl３、ld、３、dl３、ld、３</p>
             </Grid>
           </Grid>
           <Grid>
@@ -160,7 +103,7 @@ export const TaskDetails = (props: any) => {
             color="secondary"
             variant="contained"
           >
-            保存
+            編集
           </Button>
         </Box>
       </Card>

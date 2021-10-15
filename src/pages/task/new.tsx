@@ -1,3 +1,4 @@
+import {TransitionsModal} from './modal'
 import {
     Box,
     Container,
@@ -29,16 +30,16 @@ import {
             >
               <Grid
                 item
-                lg={9}
-                md={9}
+                lg={8}
+                md={8}
                 xs={12}
               >
                 <NewTaskDetails />
               </Grid>
               <Grid
                 item
-                lg={3}
-                md={3}
+                lg={4}
+                md={4}
                 xs={12}
               >
                 <TaskProlangs/>
@@ -46,7 +47,7 @@ import {
                 <TaskTools/>
               </Grid>
             </Grid>
-
+            <TransitionsModal/>
             <br/>
             <br/>
             <br/>
