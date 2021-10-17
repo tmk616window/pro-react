@@ -1,7 +1,14 @@
-import { Link as RouterLink, useNavigate } from 'react-router-dom';
-import { Helmet } from 'react-helmet';
 import * as Yup from 'yup';
+import Image from 'next/image'
 import { Formik } from 'formik';
+import LogIn from '../img/login.png'
+import Cookies from "js-cookie"
+import {SignInParams} from '../src/type/interfaces'
+import { signIn } from "../src/api/login/auth";
+import { AuthContext } from "./_app"
+import React, { useState, useContext } from "react"
+
+
 import {
   Box,
   Button,
@@ -11,20 +18,59 @@ import {
   TextField,
   Typography
 } from '@material-ui/core';
-// import FacebookIcon from '../icons/Facebook';
-// import GoogleIcon from '../icons/Google';
+let style = {
+  // backgroundColor: "#13EEFF",
+  margin: "100px 0px 0px 0px",
+  // padding: "200px 0px 190px 0px"
+};
 
-const Login = () => {
-  const navigate = useNavigate();
+
+
+const Login: React.FC = () => {
+
+  const { setIsSignedIn, setCurrentUser } = useContext(AuthContext)
+
+  const handleSubmit = async (params:any) => {
+    console.log(params)
+
+    try {
+      const res = await signIn(params)
+      console.log(res)
+
+      if (res.status === 200) {
+        // ログインに成功した場合はCookieに各値を格納
+        Cookies.set("_access_token", res.headers["access-token"])
+        Cookies.set("_client", res.headers["client"])
+        Cookies.set("_uid", res.headers["uid"])
+
+        setIsSignedIn(true)
+        setCurrentUser(res.data.user)
+
+        // history.push("/")
+
+        console.log("Signed in successfully!")
+      } else {
+        // setAlertMessageOpen(true)
+      }
+    } catch (err) {
+      console.log(err)
+      // setAlertMessageOpen(true)
+    }
+
+
+}
+
 
   return (
+    <div>
     <>
-      <Helmet>
-        <title>Login | Material Kit</title>
-      </Helmet>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+
       <Box
         sx={{
-          backgroundColor: 'background.default',
           display: 'flex',
           flexDirection: 'column',
           height: '100%',
@@ -34,16 +80,14 @@ const Login = () => {
         <Container maxWidth="sm">
           <Formik
             initialValues={{
-              email: 'demo@devias.io',
-              password: 'Password123'
+              email: '',
+              password: ''
             }}
             validationSchema={Yup.object().shape({
-              email: Yup.string().email('Must be a valid email').max(255).required('Email is required'),
-              password: Yup.string().max(255).required('Password is required')
+              email: Yup.string().email('メールアドレスを入力してください').max(255).required('メールアドレスを入力してください'),
+              password: Yup.string().max(255).required('パスワードを入力してください')
             })}
-            onSubmit={() => {
-              navigate('/app/dashboard', { replace: true });
-            }}
+            onSubmit={handleSubmit}
           >
             {({
               errors,
@@ -58,54 +102,17 @@ const Login = () => {
                 <Box sx={{ mb: 3 }}>
                   <Typography
                     color="textPrimary"
-                    variant="h2"
+                    variant="h3"
                   >
-                    Sign in
+                    ログイン
                   </Typography>
                   <Typography
                     color="textSecondary"
                     gutterBottom
                     variant="body2"
                   >
-                    Sign in on the internal platform
                   </Typography>
                 </Box>
-                <Grid
-                  container
-                  spacing={3}
-                >
-                  <Grid
-                    item
-                    xs={12}
-                    md={6}
-                  >
-                    <Button
-                      color="primary"
-                      fullWidth
-                      startIcon={<FacebookIcon />}
-                      onClick={handleSubmit}
-                      size="large"
-                      variant="contained"
-                    >
-                      Login with Facebook
-                    </Button>
-                  </Grid>
-                  <Grid
-                    item
-                    xs={12}
-                    md={6}
-                  >
-                    <Button
-                      fullWidth
-                      startIcon={<GoogleIcon />}
-                      onClick={handleSubmit}
-                      size="large"
-                      variant="contained"
-                    >
-                      Login with Google
-                    </Button>
-                  </Grid>
-                </Grid>
                 <Box
                   sx={{
                     pb: 1,
@@ -117,14 +124,14 @@ const Login = () => {
                     color="textSecondary"
                     variant="body1"
                   >
-                    or login with email address
+                    <Image alt="login" src={LogIn} width="100" height="100"/>
                   </Typography>
                 </Box>
                 <TextField
                   error={Boolean(touched.email && errors.email)}
                   fullWidth
                   helperText={touched.email && errors.email}
-                  label="Email Address"
+                  label="メールアドレス"
                   margin="normal"
                   name="email"
                   onBlur={handleBlur}
@@ -137,7 +144,7 @@ const Login = () => {
                   error={Boolean(touched.password && errors.password)}
                   fullWidth
                   helperText={touched.password && errors.password}
-                  label="Password"
+                  label="パスワード"
                   margin="normal"
                   name="password"
                   onBlur={handleBlur}
@@ -148,24 +155,24 @@ const Login = () => {
                 />
                 <Box sx={{ py: 2 }}>
                   <Button
-                    color="primary"
-                    disabled={isSubmitting}
+                    color="secondary"
+                    // disabled={isSubmitting}
                     fullWidth
                     size="large"
                     type="submit"
                     variant="contained"
                   >
-                    Sign in now
+                    ログイン
                   </Button>
                 </Box>
                 <Typography
                   color="textSecondary"
                   variant="body1"
                 >
-                  Don&apos;t have an account?
+                  アカウントをお持ちですか?
                   {' '}
-                  <Link component={RouterLink} to="/register" variant="h6" underline="hover">
-                    Sign up
+                  <Link >
+                    ログイン
                   </Link>
                 </Typography>
               </form>
@@ -174,7 +181,8 @@ const Login = () => {
         </Container>
       </Box>
     </>
+    </div>
   );
 };
 
-export default Login;
+export default Login

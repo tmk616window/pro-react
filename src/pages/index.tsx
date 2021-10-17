@@ -1,20 +1,15 @@
 import type { NextPage } from 'next'
-import Head from 'next/head'
-import Image from 'next/image'
-import {Top} from './components/Top'
-import {Navbar} from './components/Navbar'
-import {TaskList} from './components/Task/TaskList'
-import Link from 'next/link';
-// import {ActiveLink} from './api/ActiveLink'
+import { useRouter } from 'next/router'
+import Top from './top'
+
 
 const Home: NextPage = () => {
+  const router = useRouter()
+
+
   return (
     <>
-          
-          {/* <TaskList/> */}
-        {/* <Navbar/> */}
-          {/* <Top/> */}
-
+          <Top/>
     </>
   )
 }
