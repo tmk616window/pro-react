@@ -3,6 +3,6 @@ import {Task} from '../../type/interfaces/task'
 import axios from 'axios'
 
 export const getTasks =  () => {
-    return api.get<{tasks: Task[]}>("/tasks")
+    return axios.get<{tasks: Task[]}>("http://localhost/api/v1/tasks")
   }
   

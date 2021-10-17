@@ -20,7 +20,7 @@ export const AuthContext = createContext({} as {
   isSignedIn: boolean
   setIsSignedIn: React.Dispatch<React.SetStateAction<boolean>>
   currentUser: User | undefined
-  setCurrentUser: React.Dispatch<React.SetStateAction<User | undefined>>
+  setCurrentUser: React.Dispatch<React.SetStateAction<any>>
 })
 
 
@@ -40,21 +40,14 @@ function MyApp({ Component, pageProps }: AppProps) {
       const _client = Cookies.get("_client")
       const _uid = Cookies.get("_uid")
       
-      const params = {
-        "access-token": _access_token,
-        "client": _client,
-        "uid": _uid    
-      }
+      const res = await getCurrentUser()
+      console.log(res?.data.currentUser.isLogin)
 
-      const res = await getCurrentUser(params)
-      console.log(res)
-      console.log(res.data.is_login)
-
-      if (res?.data.is_login === true) {
+      if (res?.data.currentUser.isLogin === true) {
         setIsSignedIn(true)
-        setCurrentUser(res?.data.data)
+        setCurrentUser(res?.data.currentUser.user)
 
-        console.log(res?.data.data)
+        console.log(res?.data.currentUser)
       } else {
         console.log("No current user")
       }

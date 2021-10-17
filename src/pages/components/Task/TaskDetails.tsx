@@ -62,7 +62,7 @@ export const TaskDetails = (props: any) => {
               md={12}
               xs={12}
             >
-              <Image src={Logo} height="800"/>
+              <Image alt="logo" src={Logo} height="800"/>
             </Grid>
             <Grid
               item

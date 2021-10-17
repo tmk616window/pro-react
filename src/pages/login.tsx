@@ -30,7 +30,7 @@ const Login: React.FC = () => {
 
   const { setIsSignedIn, setCurrentUser } = useContext(AuthContext)
 
-  const handleSubmit = async (params:SignInParams) => {
+  const handleSubmit = async (params:any) => {
     console.log(params)
 
     try {
@@ -44,7 +44,7 @@ const Login: React.FC = () => {
         Cookies.set("_uid", res.headers["uid"])
 
         setIsSignedIn(true)
-        setCurrentUser(res.data)
+        setCurrentUser(res.data.user)
 
         // history.push("/")
 
@@ -124,7 +124,7 @@ const Login: React.FC = () => {
                     color="textSecondary"
                     variant="body1"
                   >
-                    <Image src={LogIn} width="100" height="100"/>
+                    <Image alt="login" src={LogIn} width="100" height="100"/>
                   </Typography>
                 </Box>
                 <TextField

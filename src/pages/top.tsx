@@ -12,20 +12,11 @@ export default function Top() {
     <div className="App">
         <html lang="en">
             <head>
-                <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
                 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
                 <meta name="description" content="" />
                 <meta name="author" content="" />
                 <title>Agency - Start Bootstrap Theme</title>
-                {/* <!-- Favicon--> */}
                 <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-                {/* <!-- Font Awesome icons (free version)--> */}
-                <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" ></script>
-                {/* <!-- Google fonts--> */}
-                <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
-                <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
-                {/* <!-- Core theme CSS (includes Bootstrap)--> */}
-                <link href="css/styles.css" rel="stylesheet" />
             </head>
             <body id="page-top">
                 <header className="masthead">
@@ -72,7 +63,7 @@ export default function Top() {
     <div className="col-md-4">
       <p>１位</p>
       <div className="card card-1">
-      <Image src={Post} width="100%" height="100%" />
+      <Image alt="alt" src={Post} width="100%" height="100%" />
         <h3>Ionic Native</h3>
         <p>A curated set of   ES5/ES6/TypeScript wrappers for plugins to easily add any native functionality to your Ionic apps.</p>
         <p>A curated set of   ES5/ES6/TypeScript wrappers for plugins to easily add any native functionality to your Ionic apps.</p>
@@ -87,7 +78,7 @@ export default function Top() {
     <div className="col-md-4">
     <p>２位</p>
       <div className="card card-1">
-      <Image src={Post} width="100%" height="100%"  />
+      <Image alt="post" src={Post} width="100%" height="100%"  />
         <h3>Ionic Native</h3>
         <p>A curated set of   ES5/ES6/TypeScript wrappers for plugins to easily add any native functionality to your Ionic apps.</p>
       </div>
@@ -95,13 +86,13 @@ export default function Top() {
     <div className="col-md-4">
     <p>３位</p>
       <div className="card card-1">
-      <Image src={Post} width="100%" height="100%" />
+      <Image alt="post" src={Post} width="100%" height="100%" />
         <h3>Ionic Native</h3>
         <p>A curated set of   ES5/ES6/TypeScript wrappers for plugins to easily add any native functionality to your Ionic apps.</p>
       </div>
     </div>
   </div>
-  <a className="btn btn-primary btn-xl text-uppercase" href="/">他の作品を見る</a>
+  {/* <a className="btn btn-primary btn-xl text-uppercase" href="/">他の作品を見る</a> */}
 
 </div>
 

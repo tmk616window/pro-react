@@ -30,7 +30,7 @@ const Register = () => {
   margin: "100px 0px 0px 0px"
 };
 
-const handleSubmit = async (params:SignUpParams) => {
+const handleSubmit = async (params:any) => {
   // e.preventDefault()
 
 
@@ -119,7 +119,7 @@ const handleSubmit = async (params:SignUpParams) => {
                     color="textSecondary"
                     variant="body1"
                   >
-                    <Image src={Regi} width="140" height="140"/>
+                    <Image alt="resister" src={Regi} width="140" height="140"/>
                   </Typography>
                 </Box>
                 </Box>
@@ -169,7 +169,7 @@ const handleSubmit = async (params:SignUpParams) => {
                     fullWidth
                     size="large"
                     type="submit"
-                    disabled={ !values.email || !values.password || !values.password_confirmation ? true : false}
+                    // disabled={ !values.email || !values.password || !values.password_confirmation ? true : false}
                     variant="contained"
                   >
                     アカウント作成

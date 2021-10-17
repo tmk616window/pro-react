@@ -83,7 +83,7 @@ export default function Login() {
                     color="textSecondary"
                     variant="body1"
                   >
-                    <Image src={Admin} width="100" height="100"/>
+                    <Image alt="admin" src={Admin} width="100" height="100"/>
                   </Typography>
                 </Box>
                 <TextField

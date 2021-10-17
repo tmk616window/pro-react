@@ -31,7 +31,7 @@ import {
             flexDirection: 'column'
           }}
         >
-          <Image src={Logo} height="800"/>
+          <Image alt="img" src={Logo} height="800"/>
           <Typography
             color="textPrimary"
             gutterBottom

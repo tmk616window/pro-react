@@ -56,7 +56,7 @@ export const Navbar = () => {
             "client": _client,
             "uid": _uid    
           }
-          console.log(params)
+          // console.log(params)
           const res = await signOut(params)
           console.log(res)
     

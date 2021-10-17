@@ -35,7 +35,7 @@ type content = {
 
 export const NewTaskDetails = () => {
   const [contents, setContents] = useState<content[]>([{title:"", text:""}])
-  const [image, setImage] = useState()
+  const [image, setImage] = useState<string>("")
   const addContent = () => {
     setContents([...contents, {title:"", text:""}]);
     console.log(contents)
@@ -111,7 +111,7 @@ export const NewTaskDetails = () => {
                 ロゴ画像を貼ってください
                   <input type="file" accept="image/*" onChange={handleImageChange}/>
               </Button>
-              <img src={image} height="450" width="100%"/>
+              <Image alt="admin" src={image} height="450" width="100%"/>
               {/* <Image src={image} height="800"/> */}
             </Grid>
 

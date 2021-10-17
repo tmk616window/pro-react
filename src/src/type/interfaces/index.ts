@@ -3,14 +3,22 @@ export interface SignUpParams {
     email: string
     password: string
     password_confirmation: string
+    data: any
   }
   
   // サインイン
   export interface SignInParams {
     email: string
     password: string
+    user: User
   }
   
+  export interface currentUser {
+    user: User
+    isLogin: boolean
+  }
+  
+
   // ユーザー
   export interface User {
     id: number

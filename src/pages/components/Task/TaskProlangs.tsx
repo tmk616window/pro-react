@@ -13,7 +13,7 @@ import {
     IconButton,
     Grid
   } from '@material-ui/core';
-  
+  import {createProLang} from '../../../src/api/prolang/CreateProLang'
   import DeleteIcon from '@material-ui/icons/Delete';
   
 
@@ -23,12 +23,15 @@ import {
       const [proLangs, setProLangs] = useState<string[]>([])
     
       const deleteContent = (id:number) => {
-        setProLangs(proLangs.filter((_, i) => i !== id))
+        const dTask = proLangs.filter((_, i) => i !== id)
+
+        setProLangs(dTask)
       }
         
       const addContent = () => {
         setProLangs([...proLangs, form]);
         console.log(proLangs)
+        createProLang(form)
         setForm("")
         };
 

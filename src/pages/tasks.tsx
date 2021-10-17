@@ -10,7 +10,6 @@ export const TaskList = () => {
 
   
   const handleGetTasks = async () => {
-
     try {
       const res = await getTasks()
       console.log(res.data.tasks)
@@ -20,6 +19,8 @@ export const TaskList = () => {
         console.log("dem",res.data.tasks)
         console.log("tasks", Tasks)
         setTasks(Tasks)
+        // setTasks((newTasks) => Tasks)
+    
       } else {
         
       }
@@ -29,8 +30,11 @@ export const TaskList = () => {
 
   }
 
+  useEffect(() => {
+    handleGetTasks()
+  },[])
 
-
+  
 
   let listItem = {
     margin: "10px 20px 20px 20px",
@@ -39,7 +43,7 @@ export const TaskList = () => {
   let taslList = {
     // backgroundColor: "#99FFFF	",
   }
-
+  console.log("dddmdopekmdopew", tasks)
     return (
       <div style={taslList}>
               <br/>
@@ -49,9 +53,10 @@ export const TaskList = () => {
               <br/>
               <br/>
               <br/>
+              {/* <>{tasks}</> */}
         <ul className="list-group">
-          {["List Item 1", "List Item 2", "List Item 3"].map(listitem => (
-            <li className="list-group-item list-group-item-primary list-item" >
+          {["List Item 1", "List Item 2", "List Item 3"].map((listitem ,index)=> (
+            <li key={index} className="list-group-item list-group-item-primary list-item" >
               <div className="item-image">
                 <Image src={Logo} alt="..." width = "250" height="250" className="logo-image" />
               </div>
@@ -61,6 +66,7 @@ export const TaskList = () => {
                 <p className="description">dkopkdomxklんmkおxsんwこcんwkpmんqkpmwkpqmdpwqmpwんmqpdmんwqkpmpおwqもpwqもpもpqwdmんどpqpekwopddejwopjdeopjopdew</p>
                 <p>使用技術</p>
                 <div className="langArticle">
+                  
                 <span className="article">vue</span>
                 <span className="article">vue</span>
                 <span className="article">vue</span>

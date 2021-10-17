@@ -12,7 +12,7 @@ import {
     IconButton,
     Grid
   } from '@material-ui/core';
-  
+  import {createTool} from '../../../src/api/tool/CreatTool'
   import DeleteIcon from '@material-ui/icons/Delete';
 
   
@@ -29,6 +29,7 @@ import {
     const addContent = () => {
       setTools([...tools, toolForm]);
       console.log(tools)
+      createTool(toolForm)
       setToolForm("")
       };
 

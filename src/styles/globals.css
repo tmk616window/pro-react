@@ -12337,3 +12337,7 @@ max-height: 120px; */
   margin: 1px;
   display: inline-block;
 }
+
+.taskComment {
+  border-bottom: #000 1px ;
+}
